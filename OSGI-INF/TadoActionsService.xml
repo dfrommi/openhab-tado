@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.eclipse.smarthome.action.thing.action">
+    <implementation class="org.openhab.binding.tado.internal.TadoActionService" />
+    <service>
+        <provide interface="org.eclipse.smarthome.model.script.engine.action.ActionService" />
+    </service>
+      <reference bind="setThingRegistry" cardinality="1..1" interface="org.eclipse.smarthome.core.thing.ThingRegistry" name="ThingRegistry" policy="static" unbind="unsetThingRegistry"/>
+</scr:component>
