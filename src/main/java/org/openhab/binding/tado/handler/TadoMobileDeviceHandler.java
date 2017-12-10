@@ -21,6 +21,7 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.openhab.binding.tado.TadoBindingConstants;
 import org.openhab.binding.tado.config.TadoMobileDeviceConfig;
+import org.openhab.binding.tado.internal.api.TadoClientException;
 import org.openhab.binding.tado.internal.api.model.MobileDevice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +73,7 @@ public class TadoMobileDeviceHandler extends BaseHomeThingHandler {
                             "Geotracking is disabled on mobile device " + device.getName());
                     return;
                 }
-            } catch (IOException e) {
+            } catch (IOException | TadoClientException e) {
                 return;
             }
 
@@ -97,12 +98,12 @@ public class TadoMobileDeviceHandler extends BaseHomeThingHandler {
             MobileDevice device = getMobileDevice();
             updateState(TadoBindingConstants.CHANNEL_MOBILE_DEVICE_AT_HOME,
                     device.getLocation().getAtHome() ? OnOffType.ON : OnOffType.OFF);
-        } catch (IOException e) {
+        } catch (IOException | TadoClientException e) {
             logger.warn("Status update of mobile device with id " + configuration.id + " failed: " + e.getMessage());
         }
     }
 
-    private MobileDevice getMobileDevice() throws IOException {
+    private MobileDevice getMobileDevice() throws IOException, TadoClientException {
         try {
             MobileDevice device = getApi().getMobileDeviceDetails(getHomeId(), configuration.id);
             if (device == null) {
@@ -113,7 +114,7 @@ public class TadoMobileDeviceHandler extends BaseHomeThingHandler {
             }
 
             return device;
-        } catch (IOException e) {
+        } catch (IOException | TadoClientException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
                     "Could not connect to server due to " + e.getMessage());
             throw e;

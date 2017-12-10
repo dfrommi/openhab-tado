@@ -7,6 +7,7 @@ import org.openhab.binding.tado.TadoBindingConstants.FanSpeed;
 import org.openhab.binding.tado.TadoBindingConstants.HvacMode;
 import org.openhab.binding.tado.TadoBindingConstants.OperationMode;
 import org.openhab.binding.tado.handler.TadoZoneHandler;
+import org.openhab.binding.tado.internal.api.TadoClientException;
 import org.openhab.binding.tado.internal.api.model.GenericZoneSetting;
 import org.openhab.binding.tado.internal.api.model.Overlay;
 import org.openhab.binding.tado.internal.api.model.OverlayTerminationCondition;
@@ -97,7 +98,7 @@ public class TadoHvacChange {
         return this;
     }
 
-    public void apply() throws IOException, ZoneUpdateException {
+    public void apply() throws IOException, TadoClientException {
         if (followSchedule) {
             zoneHandler.removeOverlay();
         } else {
@@ -106,7 +107,7 @@ public class TadoHvacChange {
         }
     }
 
-    private Overlay buildOverlay() throws IOException {
+    private Overlay buildOverlay() throws IOException, TadoClientException {
         ZoneState zoneState = getZoneState(); // TODO: encapsulate in Provider class to get only if required and cache
         OverlayTerminationCondition terminationCondition = terminationConditionBuilder.build(zoneState);
         GenericZoneSetting setting = settingsBuilder.build(zoneState, zoneHandler.getZoneCapabilities());
@@ -118,7 +119,7 @@ public class TadoHvacChange {
         return overlay;
     }
 
-    private ZoneState getZoneState() throws IOException {
+    private ZoneState getZoneState() throws IOException, TadoClientException {
         ZoneState zoneState = zoneHandler.getZoneState();
         // empty zone state behaves like a NULL object
         return zoneState != null ? zoneState : new ZoneState();

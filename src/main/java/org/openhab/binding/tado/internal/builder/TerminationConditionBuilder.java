@@ -5,6 +5,7 @@ import static org.openhab.binding.tado.internal.api.TadoApiTypeUtils.*;
 import java.io.IOException;
 
 import org.openhab.binding.tado.handler.TadoZoneHandler;
+import org.openhab.binding.tado.internal.api.TadoClientException;
 import org.openhab.binding.tado.internal.api.model.OverlayTerminationCondition;
 import org.openhab.binding.tado.internal.api.model.OverlayTerminationConditionType;
 import org.openhab.binding.tado.internal.api.model.TimerTerminationCondition;
@@ -39,7 +40,7 @@ public class TerminationConditionBuilder {
         return this;
     }
 
-    public OverlayTerminationCondition build(ZoneState zoneState) throws IOException {
+    public OverlayTerminationCondition build(ZoneState zoneState) throws IOException, TadoClientException {
         OverlayTerminationCondition terminationCondition = null;
 
         if (terminationType != null) {
@@ -59,7 +60,7 @@ public class TerminationConditionBuilder {
         return terminationCondition;
     }
 
-    private OverlayTerminationCondition getDefaultTerminationCondition() throws IOException {
+    private OverlayTerminationCondition getDefaultTerminationCondition() throws IOException, TadoClientException {
         OverlayTerminationCondition defaultTerminationCondition = zoneHandler.getDefaultTerminationCondition();
         return defaultTerminationCondition != null ? defaultTerminationCondition : manualTermination();
     }

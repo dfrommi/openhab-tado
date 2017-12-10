@@ -20,6 +20,7 @@ import org.openhab.binding.tado.TadoBindingConstants.TemperatureUnit;
 import org.openhab.binding.tado.config.TadoHomeConfig;
 import org.openhab.binding.tado.internal.api.TadoApiClient;
 import org.openhab.binding.tado.internal.api.TadoApiClientFactory;
+import org.openhab.binding.tado.internal.api.TadoClientException;
 import org.openhab.binding.tado.internal.api.model.HomeInfo;
 import org.openhab.binding.tado.internal.api.model.User;
 import org.slf4j.Logger;
@@ -74,7 +75,7 @@ public class TadoHomeHandler extends BaseBridgeHandler {
             TemperatureUnit temperatureUnit = org.openhab.binding.tado.internal.api.model.TemperatureUnit.FAHRENHEIT == homeInfo
                     .getTemperatureUnit() ? TemperatureUnit.FAHRENHEIT : TemperatureUnit.CELSIUS;
             updateProperty(TadoBindingConstants.PROPERTY_HOME_TEMPERATURE_UNIT, temperatureUnit.name());
-        } catch (IOException e) {
+        } catch (IOException | TadoClientException e) {
             logger.error("Error accessing tado server: " + e.getMessage(), e);
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
                     "Could not connect to server due to " + e.getMessage());
