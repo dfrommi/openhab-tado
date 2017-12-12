@@ -60,11 +60,13 @@ Name | Type | Description | Read/Write | Zone type
 
 The `RW` items are used to either override the schedule or to return to it (if `hvacMode` is set to `SCHEDULE`).
 
-To be able to define a full override with multiple item changes from the UI, the binding does not immediately apply individual changes, but instead collects them and waits for 5 seconds (by default - see `hvacChangeDebounce` above) after the last command before the combined request is sent to the tado° cloud.    
+### Item command collection
+Item changes are not immediately applied, but instead collected and only when no change is done for 5 seconds (by default - see `hvacChangeDebounce` above), the combined HVAC change is sent to the server.
 This way, you can for example set a timer for 15 minutes, with target temperature 22° and mode `HEAT` in one go, without intermediate partial overrides.
+It's still fine to only change one item, like setting the target temperature to 22°, but you have the opportunity to set more items and have less defaults applied.
 
 ### Default handling
-To set an override, the tado° cloud API requires a setting (`hvacMode`, `targetTemperature`, `fanspeed`, `swing`) and a termination condition (`operationMode`, `timerDuration`). If only some of the properties are set, the binding fills the missing pieces automatically. It tries to keep the current state wherever possible.
+To set an override, the tado° cloud API requires a full setting (`hvacMode`, `targetTemperature`, `fanspeed`, `swing`) and a termination condition (`operationMode`, `timerDuration`). If only some of the properties are set, the binding fills the missing pieces automatically. It tries to keep the current state wherever possible.
 
 If parts of the setting are missing, then the currently active zone setting is used to fill the gap. Only if the setting is not compatible with the requested change, then hard-coded defaults are applied.
 
@@ -73,7 +75,8 @@ If parts of the setting are missing, then the currently active zone setting is u
 - `fanspeed` is set to first supported value, for example `AUTO`
 - `swing` is set to `OFF`, if supported
 
-If the termination condition is missing, the binding first checks if an override is active. If that's the case, the existing termination condition is used. An existing timer, for example, just keeps running. If the zone is currently in smart-schedule mode and thus doesn't have a termination condition, then the default termination condition is used, as configured in the tado° app.
+If the termination condition is missing, the binding first checks if an override is active. If that's the case, the existing termination condition is used. An existing timer, for example, just keeps running. 
+In case the zone is currently in smart-schedule mode and thus doesn't have a termination condition, then the default termination condition is used, as configured in the tado° app (settings -> select zone -> manual control on tado° device).
 
 ## `mobiledevice` Thing
 The `mobiledevice` thing represents a smart phone that is configured for tado°. It provides access to the geotracking functionality.
