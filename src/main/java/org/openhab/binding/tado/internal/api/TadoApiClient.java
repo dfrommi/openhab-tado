@@ -86,6 +86,7 @@ public class TadoApiClient {
     public void removeOverlay(long homeId, long zoneId) throws IOException, TadoClientException {
         Response<Void> response = api.deleteZoneOverlay(homeId, zoneId).execute();
         handleError(response, "Error removing overlay of zone " + zoneId + " of home " + homeId);
+        response.raw().close();
     }
 
     public List<MobileDevice> listMobileDevices(long homeId) throws IOException, TadoClientException {
