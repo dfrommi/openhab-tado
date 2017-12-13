@@ -115,6 +115,7 @@ public class TadoHvacChange {
         Overlay overlay = new Overlay();
         overlay.setTermination(terminationCondition);
         overlay.setSetting(setting);
+        overlay.setType(terminationCondition.getType());
 
         return overlay;
     }
