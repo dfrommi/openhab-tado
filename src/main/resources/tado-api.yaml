@@ -920,10 +920,6 @@ definitions:
         description: |
           The currently active overlay for the zone, `null` if none.
         $ref: "#/definitions/Overlay"
-      overlayType:
-        description: |
-          DEPRECATED. Use the `overlay` property instead.
-        $ref: "#/definitions/OverlayTerminationConditionType"
       openWindow:
         description: |
           The currently active open window for the zone, `null` if none.
@@ -944,7 +940,6 @@ definitions:
     - tadoMode
     - preparation
     - geolocationOverride
-    - overlayType
     - setting
     - link
     - activityDataPoints
