@@ -1,6 +1,7 @@
 package org.openhab.binding.tado.internal.api;
 
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
 import org.openhab.binding.tado.internal.api.auth.OAuth;
 import org.openhab.binding.tado.internal.api.auth.OAuthFlow;
 import org.openhab.binding.tado.internal.api.client.PUBLICApi;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
@@ -53,15 +55,16 @@ public class TadoApiClientFactory {
         apiClient.setAdapterBuilder(adapterBuilder);
         apiClient.getOkBuilder().addInterceptor(new UserAgentInterceptor(USER_AGENT));
 
-        OAuth oauth = new OAuth(OAuthClientRequest.tokenLocation(OAUTH_TOKEN_URL).setScope(OAUTH_SCOPE)
-                .setClientId(OAUTH_CLIENT_ID).setClientSecret(OAUTH_CLIENT_SECRET));
+        TokenRequestBuilder tokenRequestBuilder = OAuthClientRequest.tokenLocation(OAUTH_TOKEN_URL)
+                .setScope(OAUTH_SCOPE).setClientId(OAUTH_CLIENT_ID).setClientSecret(OAUTH_CLIENT_SECRET)
+                .setUsername(username).setPassword(password);
+        OkHttpClient authHttpClient = new OkHttpClient.Builder().addInterceptor(new UserAgentInterceptor(USER_AGENT))
+                .build();
+
+        OAuth oauth = new OAuth(authHttpClient, tokenRequestBuilder);
         oauth.setFlow(OAuthFlow.password);
 
-        oauth.getTokenRequestBuilder().setUsername(username).setPassword(password);
-
         apiClient.addAuthorization("oauth", oauth);
-        // configureLogging(apiClient);
-
         return apiClient.createService(PUBLICApi.class);
     }
 
