@@ -12,6 +12,8 @@ swagger-codegen generate \
   -c tado-client-config.json \
   -D apiTests=false,modelTests=false
 
+cp OAuth.java.patched target/swagger/src/main/java/org/openhab/binding/tado/internal/api/auth/OAuth.java
+
 cd target/swagger/
 mvn package
 mvn dependency:copy-dependencies -DincludeScope=runtime
