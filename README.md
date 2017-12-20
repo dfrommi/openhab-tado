@@ -3,6 +3,13 @@ The tado° binding integrates devices from [tado°](http://www.tado.com) into Op
 
 It requires a fully functional tado° installation. You can then monitor and control all zone types (Heating, AC, Hot Water) as well as retrieve the HOME/AWAY status of mobile devices.
 
+## Installation
+The easiest way to install this plugin is from the [Eclipse IoT Marketplace](https://marketplace.eclipse.org/content/tado°-binding).
+
+Make sure that the [marketplace plugin is activated](https://docs.openhab.org/configuration/eclipseiotmarket.html), and then install the *tado° binding* with PaperUI (`Add-ons -> Bindings -> tado° Binding`).
+
+Be aware that you might have to reinstall the binding after an OpenHAB upgrade. This is a limitation of the Eclipse Marketplace plugin and will be changed in future.
+
 ## `home` Thing (the Bridge)
 The binding supports discovery, but a `home` thing type has to be configured first. It serves as bridge to the tado° cloud services.
 
