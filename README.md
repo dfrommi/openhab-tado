@@ -109,48 +109,6 @@ Name | Type | Description | Read/Write
 
 Group `OR` can be used to define an item for *'is any device at home'*.
 
-## tado° Actions
-**CURRENTLY NOT WORKING! RULES CANNOT FIND ACTION CLASS**
-
-## hvacChange
-The binding ships with an action to define overrides.
-
-It's ok to not provide all properties. The action then fills the missing pieces with reasonable defaults.
-
-*Entry point:* `org.openhab.binding.tado.TadoActions.hvacChange(thingRegistry, zoneThingName)`
-
-*Methods:*
-
-Name | Description | Operation
--|-|-
-`followSchedule()` | Back to smart schedule | `OperationMode` := `SCHEDULE`
-`activeForever()`  | Active until cancelled manually | `OperationMode` := `MANUAL`
-`activeUntilChange()` | Active until next schedule block is reached or home switches to AWAY mode. | `OperationMode` := `UNTIL_CHANGE`
-`activeFor(minutes)` | Active for specified duration | `OperationMode` := `TIMER` and `timerDuration` := `minutes`
-`withTemperature(degrees)` | Set target temperature | `targetTemperature` := `degrees`
-`withHvacMode(mode)` | Sets HVAC mode to one of `OFF`, `HEAT`, `COOL`, `DRY`, `FAN`, `AUTO` | `HvacMode` := `mode`
-`withSwing(swingOn)` | Sets swing. `true` is swing ON, `false` is OFF | `swing` := `swingOn`
-`withFanSpeed(speed)` | Sets fan speed to one of `AUTO`, `LOW`, `MIDDLE`, `HIGH` | `fanspeed` := `speed`
-`apply()` | Applies the override. Has to be called last. Without it, nothing will be send to the tado° cloud. |
-
-*Example:* Boot scene rule (full heat for 30 minutes), triggered by a switch item
-```
-import org.openhab.binding.tado.TadoActions
-
-rule "Activate Heating Boost"
-  when
-    Item HeatingBoost received command ON
-  then
-    TadoActions.hvacChange(things, "tado:zone:demo:heating")
-      .activeFor(30)
-      .withHvacMode("HEAT")
-      .withTemperature(25)
-      .apply()
-
-    HeatingBoost.postUpdate(OFF)
-end
-```
-
 # Full Example
 
 ## tado.things
