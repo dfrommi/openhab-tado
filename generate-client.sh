@@ -22,6 +22,10 @@ rm ../../lib/*
 cp target/tado-api-client-1.0.0.jar ../../lib/
 cp target/dependency/* ../../lib
 
+# Remove provided JARs again
+rm ../../lib/joda-time-*.jar
+rm ../../lib/slf4j-*.jar
+
 cd ../../
 
 #Additional libs
