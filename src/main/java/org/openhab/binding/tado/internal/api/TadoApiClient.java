@@ -18,6 +18,11 @@ import org.openhab.binding.tado.internal.api.model.ZoneState;
 
 import retrofit2.Response;
 
+/**
+ * API client to access tado's cloud API.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TadoApiClient {
     private PUBLICApi api;
 

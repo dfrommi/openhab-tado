@@ -26,6 +26,11 @@ import retrofit2.Retrofit;
 import retrofit2.Retrofit.Builder;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Factory to create and configure {@link TadoApiClient} instances.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TadoApiClientFactory {
     private static final String OAUTH_SCOPE = "home.user";
     private static final String OAUTH_CLIENT_ID = "public-api-preview";

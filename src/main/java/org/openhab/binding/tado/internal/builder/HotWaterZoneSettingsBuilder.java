@@ -13,6 +13,11 @@ import org.openhab.binding.tado.internal.api.model.TadoSystemType;
 import org.openhab.binding.tado.internal.api.model.TemperatureObject;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ * Builder for incremental creation of hot water zone settings.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class HotWaterZoneSettingsBuilder extends ZoneSettingsBuilder {
     private static final float DEFAULT_TEMPERATURE_C = 50.0f;
     private static final float DEFAULT_TEMPERATURE_F = 122.0f;

@@ -9,6 +9,11 @@ import org.openhab.binding.tado.internal.api.model.GenericZoneSetting;
 import org.openhab.binding.tado.internal.api.model.TemperatureObject;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ * Base class for zone settings builder.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public abstract class ZoneSettingsBuilder {
     public static ZoneSettingsBuilder of(TadoZoneHandler zoneHandler) {
         switch (zoneHandler.getZoneType()) {

@@ -20,6 +20,11 @@ import org.openhab.binding.tado.internal.api.model.TemperatureObject;
 import org.openhab.binding.tado.internal.api.model.TemperatureRange;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ *
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class AirConditioningZoneSettingsBuilder extends ZoneSettingsBuilder {
     private static final AcMode DEFAULT_MODE = AcMode.COOL;
     private static final float DEFAULT_TEMPERATURE_C = 20.0f;

@@ -11,6 +11,11 @@ import org.openhab.binding.tado.internal.api.model.OverlayTerminationConditionTy
 import org.openhab.binding.tado.internal.api.model.TimerTerminationCondition;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ * Builder for creation of overlay termination conditions.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TerminationConditionBuilder {
     private TadoZoneHandler zoneHandler;
 

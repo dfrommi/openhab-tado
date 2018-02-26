@@ -12,6 +12,11 @@ import org.openhab.binding.tado.internal.api.model.TadoSystemType;
 import org.openhab.binding.tado.internal.api.model.TemperatureObject;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ * Builder for incremental creation of heating zone settings.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class HeatingZoneSettingsBuilder extends ZoneSettingsBuilder {
     private static final float DEFAULT_TEMPERATURE_C = 22.0f;
     private static final float DEFAULT_TEMPERATURE_F = 72.0f;

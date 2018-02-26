@@ -4,6 +4,11 @@ import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.openhab.binding.tado.internal.api.TadoApiClient;
 
+/**
+ * Common base class for home-based thing-handler.
+ *
+ * @author Dennis Frommknecht - Initial contribution
+ */
 abstract public class BaseHomeThingHandler extends BaseThingHandler {
 
     public BaseHomeThingHandler(Thing thing) {

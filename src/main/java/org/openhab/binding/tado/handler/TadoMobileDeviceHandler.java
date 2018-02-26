@@ -27,8 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The {@link TadoMobileDeviceHandler} is responsible for handling commands, which are
- * sent to one of the channels.
+ * The {@link TadoMobileDeviceHandler} is responsible for handling commands of mobile devices and update their state.
  *
  * @author Dennis Frommknecht - Initial contribution
  */

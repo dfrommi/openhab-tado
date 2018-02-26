@@ -14,6 +14,11 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+/**
+ * Gson converter to handle type-hierarchy of {@link OverlayTerminationConditionTemplate}.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class OverlayTerminationConditionTemplateConverter implements
         JsonSerializer<OverlayTerminationConditionTemplate>, JsonDeserializer<OverlayTerminationConditionTemplate> {
     @Override

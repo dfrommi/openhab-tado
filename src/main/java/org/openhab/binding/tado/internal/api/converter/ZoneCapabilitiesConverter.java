@@ -15,6 +15,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+/**
+ * Gson converter to handle type-hierarchy of {@link GenericZoneCapabilities}.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class ZoneCapabilitiesConverter
         implements JsonSerializer<GenericZoneCapabilities>, JsonDeserializer<GenericZoneCapabilities> {
     @Override

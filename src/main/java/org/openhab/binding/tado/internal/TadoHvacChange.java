@@ -16,6 +16,11 @@ import org.openhab.binding.tado.internal.api.model.ZoneState;
 import org.openhab.binding.tado.internal.builder.TerminationConditionBuilder;
 import org.openhab.binding.tado.internal.builder.ZoneSettingsBuilder;
 
+/**
+ * Builder for incremental creation of zone overlays.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TadoHvacChange {
     private TadoZoneHandler zoneHandler;
 

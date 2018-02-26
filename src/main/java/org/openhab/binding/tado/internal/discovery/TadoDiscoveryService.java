@@ -23,6 +23,11 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableSet;
 
+/**
+ * Discovery service for zones and mobile devices.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TadoDiscoveryService extends AbstractDiscoveryService {
     private final Logger logger = LoggerFactory.getLogger(TadoDiscoveryService.class);
 

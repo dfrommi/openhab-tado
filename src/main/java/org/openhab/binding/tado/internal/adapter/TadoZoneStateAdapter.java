@@ -28,6 +28,11 @@ import org.openhab.binding.tado.internal.api.model.TemperatureObject;
 import org.openhab.binding.tado.internal.api.model.TimerTerminationCondition;
 import org.openhab.binding.tado.internal.api.model.ZoneState;
 
+/**
+ * Adapter from API-level zone state to the binding's item-based zone state.
+ *
+ * @author Dennis Frommknecht - Initial contribution
+ */
 public class TadoZoneStateAdapter {
     private ZoneState zoneState;
     private TemperatureUnit temperatureUnit;

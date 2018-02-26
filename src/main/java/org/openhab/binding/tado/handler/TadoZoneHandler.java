@@ -39,8 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The {@link TadoZoneHandler} is responsible for handling commands, which are
- * sent to one of the channels.
+ * The {@link TadoZoneHandler} is responsible for handling commands of zones and update their state.
  *
  * @author Dennis Frommknecht - Initial contribution
  */

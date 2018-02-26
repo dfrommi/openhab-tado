@@ -6,6 +6,11 @@ import org.eclipse.smarthome.core.thing.ThingUID;
 import org.eclipse.smarthome.model.script.engine.action.ActionService;
 import org.openhab.binding.tado.TadoActions;
 
+/**
+ * Action service for {@link TadoActions}.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class TadoActionService implements ActionService {
     private static ThingRegistry thingRegistry;
 

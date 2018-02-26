@@ -5,6 +5,11 @@ import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.Response;
 
+/**
+ * Interceptor to set user-agent header on API requests.
+ *
+ * @author Dennis Frommknecht - Iniital contribution
+ */
 public class UserAgentInterceptor implements Interceptor {
 
     private final String userAgent;
