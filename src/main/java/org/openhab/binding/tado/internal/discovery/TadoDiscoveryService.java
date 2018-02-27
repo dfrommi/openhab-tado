@@ -96,7 +96,7 @@ public class TadoDiscoveryService extends AbstractDiscoveryService {
 
             if (mobileDeviceList != null) {
                 for (MobileDevice mobileDevice : mobileDeviceList) {
-                    if (mobileDevice.getSettings().getGeoTrackingEnabled()) {
+                    if (mobileDevice.getSettings().isGeoTrackingEnabled()) {
                         notifyMobileDeviceDiscovery(homeId, mobileDevice);
                     }
                 }

@@ -5,7 +5,7 @@ import static org.openhab.binding.tado.internal.api.TadoApiTypeUtils.termination
 import java.io.IOException;
 import java.util.List;
 
-import org.openhab.binding.tado.internal.api.client.PUBLICApi;
+import org.openhab.binding.tado.internal.api.client.PublicApi;
 import org.openhab.binding.tado.internal.api.model.GenericZoneCapabilities;
 import org.openhab.binding.tado.internal.api.model.HomeInfo;
 import org.openhab.binding.tado.internal.api.model.MobileDevice;
@@ -24,9 +24,9 @@ import retrofit2.Response;
  * @author Dennis Frommknecht - Iniital contribution
  */
 public class TadoApiClient {
-    private PUBLICApi api;
+    private PublicApi api;
 
-    public TadoApiClient(PUBLICApi api) {
+    public TadoApiClient(PublicApi api) {
         this.api = api;
     }
 

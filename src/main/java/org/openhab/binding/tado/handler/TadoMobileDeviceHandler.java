@@ -67,7 +67,7 @@ public class TadoMobileDeviceHandler extends BaseHomeThingHandler {
                 MobileDevice device = getMobileDevice();
                 updateProperty(TadoBindingConstants.PROPERTY_MOBILE_DEVICE_NAME, device.getName());
 
-                if (!device.getSettings().getGeoTrackingEnabled()) {
+                if (!device.getSettings().isGeoTrackingEnabled()) {
                     updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_ERROR,
                             "Geotracking is disabled on mobile device " + device.getName());
                     return;
@@ -96,7 +96,7 @@ public class TadoMobileDeviceHandler extends BaseHomeThingHandler {
         try {
             MobileDevice device = getMobileDevice();
             updateState(TadoBindingConstants.CHANNEL_MOBILE_DEVICE_AT_HOME,
-                    device.getLocation().getAtHome() ? OnOffType.ON : OnOffType.OFF);
+                    device.getLocation().isAtHome() ? OnOffType.ON : OnOffType.OFF);
         } catch (IOException | TadoClientException e) {
             logger.warn("Status update of mobile device with id " + configuration.id + " failed: " + e.getMessage());
         }

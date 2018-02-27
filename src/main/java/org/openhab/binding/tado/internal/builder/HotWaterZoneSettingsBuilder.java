@@ -52,7 +52,7 @@ public class HotWaterZoneSettingsBuilder extends ZoneSettingsBuilder {
     private void addMissingSettingParts(HotWaterZoneSetting setting, ZoneState zoneState,
             HotWaterCapabilities capabilities) {
 
-        if (capabilities.getCanSetTemperature() && setting.getTemperature() == null) {
+        if (capabilities.isCanSetTemperature() && setting.getTemperature() == null) {
             TemperatureObject temperatureObject = getCurrentOrDefaultTemperature(zoneState);
             setting.setTemperature(temperatureObject);
         }
