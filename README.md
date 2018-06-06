@@ -1,3 +1,5 @@
+# No longer maintained. This binding is now part of the official openHAB distribution.
+
 # tado° Binding
 The tado° binding integrates devices from [tado°](http://www.tado.com) into OpenHab.
 
