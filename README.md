@@ -1,4 +1,4 @@
-# No longer maintained. This binding is now part of the official openHAB distribution.
+# No longer maintained here. This binding is now part of the official openHAB distribution at https://github.com/openhab/openhab2-addons/tree/master/addons/binding/org.openhab.binding.tado
 
 # tado° Binding
 The tado° binding integrates devices from [tado°](http://www.tado.com) into OpenHab.
